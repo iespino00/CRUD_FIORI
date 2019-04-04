@@ -19,15 +19,16 @@ sap.ui.define([
             this._loadTeam(); //Ejecutar funcion para cargar JSON del team
         },
         /*Funcion para cambiar tareas*/
+
         _loadTasks: function() {
             var oController = this;
-
 
             $.getJSON("./model/mock/tasks.json", function(json) {
                 var oModel = new JSONModel(json);
                 oController.getView().byId("tabTasks").setModel(oModel);
 
             });
+
         },
 
         _loadTeam: function() {
