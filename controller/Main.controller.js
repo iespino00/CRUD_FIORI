@@ -15,7 +15,7 @@ sap.ui.define([
          * Event that will be called when the view is initialized
          */
         onInit: function() {
-            this._loadTasks();
+            // this._loadTasks();
             this._loadTeam(); //Ejecutar funcion para cargar JSON del team
         },
         /*Funcion para cambiar tareas*/
