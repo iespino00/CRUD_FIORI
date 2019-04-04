@@ -1,0 +1,104 @@
+<core:FragmentDefinition
+	  xmlns="sap.m"
+	  xmlns:l="sap.ui.layout"
+	  xmlns:f="sap.ui.layout.form"
+	  xmlns:core="sap.ui.core">
+
+<Dialog title="Add Task" contentWidth="500px" icon="sap-icon://task">
+<content>
+  <Panel>
+  	<content>
+  	 <l:VerticalLayout width="100%">
+  	    <l:content>
+  	      <f:Form editable="true">
+  	        <f:layout>
+  	          <f:ResponsiveGridLayout></f:ResponsiveGridLayout>
+  	        </f:layout>
+  	        <f:formContainers>
+  	          <f:FormContainer>
+  	          
+  	            <f:formElements>
+  	            
+  	              <f:FormElement>
+  	                <l:VerticalLayout>
+  	                  <Label text="Title"></Label>
+  	                  <Input id="txtTitleFTask" maxLength="50"></Input>
+  	                  <l:layoutData>
+  	                    <l:GridData span="L6 M6 S12"></l:GridData>
+  	                  </l:layoutData>
+  	                </l:VerticalLayout>
+  	              </f:FormElement>
+  	              
+  	              <f:FormElement>
+  	                <l:VerticalLayout>
+  	                  <Label text="User"></Label>
+  	                 <ComboBox id="cbUserFTask" width="100%" items="{/Team}">
+  	                 <core:Item key="{Code}" text="{Name}"></core:Item>
+  	                 </ComboBox>
+  	                  <l:layoutData>
+  	                    <l:GridData span="L6 M6 S12"></l:GridData>
+  	                  </l:layoutData>
+  	                </l:VerticalLayout>
+  	              </f:FormElement>
+  	              
+  	              <f:FormElement>
+                     <l:VerticalLayout>
+                        <Label text="Date"/>
+                          <DatePicker id="dpDateFTask" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy"/>
+                        <l:layoutData>
+                          <l:GridData span="L6 M6 S12"/>
+                        </l:layoutData>
+                     </l:VerticalLayout>
+                  </f:FormElement>
+
+                   <f:FormElement>
+                      <l:VerticalLayout>
+                        <Label text="Status"/>
+                          <ComboBox id="cbStatusFTask" width="100%">
+                              <core:Item key="001" text="In Progress"/>
+                              <core:Item key="002" text="Stuck"/>
+                              <core:Item key="003" text="Completed"/>
+                          </ComboBox>
+                            <l:layoutData>
+                             <l:GridData span="L6 M6 S12"/>
+                            </l:layoutData>
+                       </l:VerticalLayout>
+                   </f:FormElement>
+
+                   <f:FormElement>
+                      <l:VerticalLayout>
+                        <Label text="Progress"/>
+                        <Slider id="slProgressFTask" liveChange="onProgressChange" progress="true" showHandleTooltip="true" value="50" width="100%" min="0" max="100"/>
+                           <l:layoutData>
+                              <l:GridData span="L6 M6 S10"/>
+                          </l:layoutData>
+                       </l:VerticalLayout>
+                   </f:FormElement>
+
+                    <f:FormElement>
+                        <l:VerticalLayout>
+                           <ObjectNumber id="onProgressFTask" class="sapUiSmallMarginTop" number="50" unit="%"/>
+                             <l:layoutData>
+                              <l:GridData span="L6 M6 S2"/>
+                             </l:layoutData>
+                        </l:VerticalLayout>
+                    </f:FormElement>
+  	              
+  	            </f:formElements>
+  	            
+  	          </f:FormContainer>
+  	        </f:formContainers>      
+  	      </f:Form>
+  	    </l:content>
+  	 </l:VerticalLayout>
+  	</content>
+  </Panel>
+</content>
+
+         <buttons>
+            <Button text="Save" press="onConfirmForm" type="Accept"/>
+            <Button text="Cancel" press="onCloseForm" type="Default"/>
+        </buttons>
+
+</Dialog>
+</core:FragmentDefinition>

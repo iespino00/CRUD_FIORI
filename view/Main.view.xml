@@ -1,0 +1,91 @@
+<mvc:View
+    controllerName="com.dudev.UI5C.controller.Main"
+    xmlns="sap.m"
+    xmlns:dv="com.dudev.UI5C.control"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <Page showHeader="true" title="{i18n>appTitle}" class="whitePage">
+        <content>
+        <Panel class="sapUiResponsiveMargin" width="auto">
+	        
+	        <headerToolbar class="sapUiSmallMarginTop">
+	          <Toolbar>
+	             <Title id="tiTasks" text="Tasks"> </Title>
+	             <ToolbarSpacer></ToolbarSpacer>
+	               <Button id="btnTasks" icon="sap-icon://task" type="Default" tooltip="Change to tasks" visible="false" press="onChangeTasks">    </Button>
+	               <Button id="btnTeam" icon="sap-icon://group" type="Default" tooltip="Change to team" press="onChangeTeam">     </Button>
+	               <Button icon="sap-icon://add" type="Emphasized" tooltip="Add" press="onOpenForm"></Button>
+	          </Toolbar>
+	        </headerToolbar> 
+	        
+	        <content>
+	     		<SearchField id="txtSearch" placeholder="Search" liveChange="onSearch">
+	     		</SearchField>   
+	        </content> 
+        
+        </Panel>
+        
+            <Panel id="panTasks" class="sapUiResponsiveMargin" width="auto">
+	            <content>
+	           		<Table id="tabTasks" items="{/Tasks}">
+	           		
+	           		  <columns>
+	           		    <Column>
+	           		      <Label text="Task" design="Bold"></Label>
+	           		    </Column>
+	           		    <Column hAlign="Center">
+	           		      <Label text="Assigned To" design="Bold"></Label>
+	           		    </Column>
+	           		    <Column minScreenWidth="Tablet" vAlign="Middle" hAlign="Center"  demandPopin="true">
+	           		      <Label text="Progress" design="Bold"></Label>
+	           		    </Column>
+	           		    <Column minScreenWidth="Desktop" vAlign="Middle" hAlign="Center">
+	           		      <Label text="Status" design="Bold"></Label>
+	           		    </Column>
+	           		  </columns>
+	           		  
+	           		  <items>
+	           		    <ColumnListItem type="Navigation" press="onSelectTask" vAlign="Middle">
+	           		    	<cells>
+	           		    		<ObjectIdentifier title="{Name}" text="{Date}"></ObjectIdentifier>
+	           		    		<Image width="40px" src="{Photo}" tooltip="{User}" class="roundImage"></Image>
+	           		    		<ProgressIndicator percentValue="{=parseInt(${Progress})}" displayValue="{Progress}%"></ProgressIndicator>
+	           		    		<dv:DVStatus text="{Status}" color="{StatusColor}"></dv:DVStatus>
+	           		    	</cells> 	
+	           		    </ColumnListItem>
+	           
+	           		  </items>
+	           		</Table>
+	            </content>
+            </Panel>
+           
+            <Panel id="panTeam" class="sapUIResponsiveMargin" width="auto" visible="false">
+	            <content>
+		            <Table id="tabTeam" items="{/Team}">
+		            
+		            	<columns>
+		            		<Column vAlign="Middle">
+		            			<Label text="User" design="Bold"></Label>
+		            		</Column>
+		            	</columns>
+		            	
+		            	<items>
+		            		<ColumnListItem type="Navigation" vAlign="Middle" press="onSelectUser">
+		            			<cells>
+		            			<l:HorizontalLayout>
+		            				<Image width="40px" src="{Photo}" class="roundImage"></Image>
+		            				<ObjectIdentifier title="{Name}" text="Role" class="sapUiSmallMarginBegin"></ObjectIdentifier>
+		            				
+		            			</l:HorizontalLayout>
+		            			</cells>
+		            		</ColumnListItem>
+		            	</items>
+		            	
+		            </Table>
+	            </content>
+            </Panel>
+                   
+        </content>
+    </Page>
+</mvc:View>

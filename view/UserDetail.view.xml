@@ -1,0 +1,73 @@
+<core:View
+    controllerName="com.dudev.UI5C.controller.UserDetail"
+    xmlns = "sap.uxap"
+    xmlns:core = "sap.ui.core"
+    xmlns:m = "sap.m"
+    xmlns:layout = "sap.ui.layout"
+    xmlns:dv="com.dudev.UI5C.control">
+    <m:Page showHeader="true" title="Project Management" class="whitePage" showNavButton="true" navButtonPress="onBack">
+        <m:content>
+			
+			<ObjectPageLayout showTitleInHeaderContent="true" >
+                <headerTitle>
+                    <ObjectPageHeader id="ophDetUserDetail"
+                                      headerDesign = "Dark"
+                                      objectImageURI = "{/User/Photo}"
+                                       objectImageShape = "Circle"
+                                       objectTitle = "{/User/Name}"
+                                      objectSubtitle = "{/User/Role}"
+                                      isObjectTitleAlwaysVisible = "false"
+                                      isObjectSubtitleAlwaysVisible = "false">
+                    </ObjectPageHeader>
+                </headerTitle>
+                <headerContent>
+                    <layout:VerticalLayout>
+                        <m:ObjectAttribute title="Project" text="{/User/Project}" class="sapUiTinyMarginTop"/>
+                        <m:ObjectAttribute title="Email" text="{/User/Email}"/>
+                        <m:ObjectAttribute title="Phone" text="{/User/Phone}"/>
+                        <m:ObjectAttribute title="Manager" text="{/User/Manager}"/>
+                    </layout:VerticalLayout>
+                </headerContent>
+
+				<sections>
+					<ObjectPageSection title="Task">
+					  <subSections>
+					    <ObjectPageSubSection>
+					       <blocks>
+					       		<m:Table
+                                        id="tabTasks"
+                                        items="{/Tasks}"
+                                        growing="true" growingTriggerText="Show More..." growingThreshold="100">
+                                        <m:columns>
+                                            <m:Column vAlign="Middle">
+                                                <m:Label text="Task" design="Bold"/>
+                                            </m:Column>
+                                            <m:Column vAlign="Middle" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+                                                <m:Label text="Progress" design="Bold"/>
+                                            </m:Column>
+                                            <m:Column vAlign="Middle" hAlign="Center" minScreenWidth="Desktop">
+                                                <m:Label text="Status" design="Bold"/>
+                                            </m:Column>
+                                        </m:columns>
+                                        <m:items>
+                                            <m:ColumnListItem>
+                                                <m:cells>
+                                                    <m:ObjectIdentifier title="{Name}" text="{Date}"/>
+                                                    <m:ProgressIndicator percentValue="{=parseInt(${Progress})}" displayValue="{Progress}%" showValue="true" state="None"/>
+                                                    <dv:DVStatus text="{Status}" color="{StatusColor}"/>
+                                                </m:cells>
+                                            </m:ColumnListItem>
+                                        </m:items>
+                                   </m:Table>
+					       </blocks>
+					    </ObjectPageSubSection>
+					  </subSections>
+					</ObjectPageSection>
+				</sections>
+
+             </ObjectPageLayout>
+			
+			
+        </m:content>
+    </m:Page>
+</core:View>
